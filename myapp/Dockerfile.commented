@@ -1,0 +1,24 @@
+# Build from the ruby-2.6 Image
+FROM ruby:2.6
+
+# When setup, run the following bash commands to update the package manager
+RUN apt-get update -yqq
+RUN apt-get install -yqq --no-install-recommends nodejs
+
+# Copy the current working directory contents into the running container
+#   at /usr/src/app/
+# Last time we mounted the volumn and generated the rails app. Now that we have
+#   it we don't need to perfrom those steps. We can just copy oour project to
+#   the expected directory
+COPY . /usr/src/app/
+
+# This is like a chage directory command. After we've copied the files over
+#    we want to change to the directory where they are hosted.
+WORKDIR /usr/src/app
+
+# So now we
+#   1. Have a running container with Ruby 2.6
+#   2. That has an updated package manager
+#   3. With our Ruby app as the current working directory
+# Now all we need to do is run bundle install
+RUN bundle install
