@@ -33,3 +33,29 @@ We can then visit the site in our browser, `https://localhost:3000`
   w: specify working directory
   p: port mapping - the running port on this container to my os to access the process
   b: Binds all IP address to 0.0.0.0
+
+
+Chapter 3.
+
+Here we use CMD to auto run our command for us.
+
+https://docs.docker.com/engine/reference/builder/#cmd
+
+CMD has 3 forms of use. It may be preferable to use the shell form:
+`CMD bin/rails s -b 0.0.0.0`
+
+With the shell form, Docker will run this command prepended with /bin/bash -c
+
+Since bin/bash is the process we are connected to and not bin/rails we risk losting the ability to terminate the rails server.
+
+The author seems to prefer the exec form.
+
+`CMD ["bin/rails", "s", "-b", "0.0.0.0"]`
+
+This is treated as a JSON array - so we must use double quotes and not single quotes per the standard - https://www.json.org/json-en.html.
+
+There can only be one CMD.
+
+.dockerignore is like .gitignore - it tells docker what files it should ignore when copying the _docker context_ into the container.
+
+We learn about laying in the Docker file and how to keep our builds fast by organizing what commands change and how they change.
