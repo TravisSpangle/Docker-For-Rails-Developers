@@ -59,3 +59,11 @@ There can only be one CMD.
 .dockerignore is like .gitignore - it tells docker what files it should ignore when copying the _docker context_ into the container.
 
 We learn about laying in the Docker file and how to keep our builds fast by organizing what commands change and how they change.
+
+Chapter 4.
+
+Focus on Docker compose. Everything we've done can be wrapped up in a docker-compose file. This configuration will allow us to easily work with a complex system.
+
+We no longer put everything on one server. By organizing our application in containers, we can appropriatly scale the services by need. Giving us greater efficency in our spending.
+
+Docker compose gives us the same options as docker run - we just have to specify which container to perform the oeprations on.
