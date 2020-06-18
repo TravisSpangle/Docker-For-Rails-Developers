@@ -67,3 +67,30 @@ Focus on Docker compose. Everything we've done can be wrapped up in a docker-com
 We no longer put everything on one server. By organizing our application in containers, we can appropriatly scale the services by need. Giving us greater efficency in our spending.
 
 Docker compose gives us the same options as docker run - we just have to specify which container to perform the oeprations on.
+
+Chapter 5.
+
+We use a docker-container command to start a redis cli.
+
+`docker-compose run --rm redis redis-cli -h redis`
+  rm: remove container after running
+  redis: name of service to run
+  redis-cli: In the redis container, start the cli
+  h: host name. We use `redis` because docker-compose has creaetd a network, with DNS, using our configuration.
+       `redis` will point to the ip of our redis container
+
+This means the `docker-compose run --rm service` is the meat and potatoes of what I'm running. So I can do `docker-compose run --rm redis redis-cli --help` to fetch the flags and see what 'h' means.
+
+I'm not using the `it` flags here to maintain my session. Remember when we looked at the CMD syntax? We learned that docker will run a single command and exit. Here, the command is a cli, so I stay in that sesson. When I exist the cli it will quit the docker container (and remove it) for me).
+
+This also means I can enter the rails console with `docker-compose run --rm web rails c`.
+
+Back to the original command, this is interesting because we're running a new `redis` container and connecting to the running instance in the docker-container network.
+
+If we used `exec` instead, we would be running the command in the existing container.
+
+Next we generate a new controller for our rails project `docker-container exec web bin/rails g controller welcome index`. It is surreal to see the container generate the files in the container - but also in the current locally directory. This is because we've mounted the file directory. I believe this is happening becuase the docker managment layer is synchronizing the file system between me and the container automatically.
+
+This is a little head spinning that I"m using software in the container, not my local machine, to run a process, generate output, and have it locally.
+
+At the end of the chapter it's suggested we do not need tools like Foreman. With Docker Compose we've been able to run mulitple services, without installing ruby, rails, or redis, and maintain them.
