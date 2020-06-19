@@ -1,4 +1,4 @@
-Chapter 1.
+## Chapter 1.
 
   What is Docker
     Packaging, Distribution, Runtime, Infrastructure creation, Orchestration and scaling
@@ -14,7 +14,7 @@ Generating a New Rails app without Ruby Installed
   rm: create a throwaway container
   v: mount a volumn. When we exit the session the contents of this volumn will appear in the current directory.
 
-Chapter 2.
+## Chapter 2.
 
 This was a rough chapter. I'm not sure if there were mistakes on my part and/or tech has changed since the book was written. The publisher has updated their site and lost the Eratta.
 
@@ -35,7 +35,7 @@ We can then visit the site in our browser, `https://localhost:3000`
   b: Binds all IP address to 0.0.0.0
 
 
-Chapter 3.
+## Chapter 3.
 
 Here we use CMD to auto run our command for us.
 
@@ -60,7 +60,7 @@ There can only be one CMD.
 
 We learn about laying in the Docker file and how to keep our builds fast by organizing what commands change and how they change.
 
-Chapter 4.
+## Chapter 4.
 
 Focus on Docker compose. Everything we've done can be wrapped up in a docker-compose file. This configuration will allow us to easily work with a complex system.
 
@@ -68,7 +68,7 @@ We no longer put everything on one server. By organizing our application in cont
 
 Docker compose gives us the same options as docker run - we just have to specify which container to perform the oeprations on.
 
-Chapter 5.
+## Chapter 5.
 
 We use a docker-container command to start a redis cli.
 
@@ -94,3 +94,11 @@ Next we generate a new controller for our rails project `docker-container exec w
 This is a little head spinning that I"m using software in the container, not my local machine, to run a process, generate output, and have it locally.
 
 At the end of the chapter it's suggested we do not need tools like Foreman. With Docker Compose we've been able to run mulitple services, without installing ruby, rails, or redis, and maintain them.
+
+## Chapter 6.
+
+This chapter overlapped the last one and included ways to
+* extract and dry up docker-compose configs
+* decoupled database container from data we wanted to persist
+
+This chapter also introduces Volumes. Buckets to store data that's managed by docker.
