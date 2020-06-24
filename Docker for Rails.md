@@ -1,4 +1,4 @@
-## Chapter 1.
+[##](##) Chapter 1.
 
   What is Docker
     Packaging, Distribution, Runtime, Infrastructure creation, Orchestration and scaling
@@ -102,3 +102,13 @@ This chapter overlapped the last one and included ways to
 * decoupled database container from data we wanted to persist
 
 This chapter also introduces Volumes. Buckets to store data that's managed by docker.
+
+## Chapter 7.
+
+This chapter has been frustrating with the changes to the technology. I was able to figure out how to install `yarn` and the dockerfile at that point is commit f90c52212510506dc667ab3bea4a73c1ff5d788a.
+
+This is the reason I had to backtrack on chapter 2/3 where I had Rails 6 installed and needed to start over with Rails 5 due to the dependancy on yarn.
+
+I was able to finish this chapter by restarting at the beginning a few times. I'm happy it's over. All the pain of this book has been installing yarn. I have nothing more to say about this chapter so yay! Moving on =D
+
+## Chapter 8.
