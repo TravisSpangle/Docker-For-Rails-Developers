@@ -112,3 +112,39 @@ This is the reason I had to backtrack on chapter 2/3 where I had Rails 6 install
 I was able to finish this chapter by restarting at the beginning a few times. I'm happy it's over. All the pain of this book has been installing yarn. I have nothing more to say about this chapter so yay! Moving on =D
 
 ## Chapter 8.
+
+Setting up and running RSpec is straightforward and could have been assumed by the reader now.
+1. Add RSpec gem to Gemfile
+2. `docker-compose stop web`
+3. `docker-compose build web`
+4. `docker-compose up -d --force-recreate web`
+
+Running rspec uses `exec` as we want to run the commands in the currently running container
+
+`docker-compose exec web bin/rails spec`
+
+# Debugging
+
+To debug we need to have an interactive session that breaks and allows us to bind context. That isn't as available while `web` is running in it's own container (I'm sure someone has made a workaround).
+
+The solution is to simply use `run`. I was able to debug a test script by placing a `byebug` trace point and running
+
+`docker-compose run web rspec spec/system/`
+
+When running the web we do
+
+`docker-compose run --service-ports web` : --service-ports maps to the ports specified in docker-compose.yml.
+
+## Chapter 9.
+
+In this chapter we learn how to manage our Gem installs in a docker volumn. This has the benefit of allowing bundler to actually manage our gems instead of installing it over and over.
+
+Like Rob says, this technique adds more complexity and requires devs to have a higher skill in Docker. But it is a very attractive solution. It speeds up deployments and allows the tools to fit the problems space they were designed for.
+
+## Chapter 10.
+
+Here we learn to use ENTRYPOINTS to have a BEGIN script in running our Docker Containers. We use it to fix a pesky bug where the server.pid file sometimes sticks around.
+
+This chapter concludes our development with Docker and we move on to using Docker in Production.
+
+I've really enjoyed this book so far. It did have it's fair share of head aches but I know have the confidence and motivation to squeeze docker into my dev workflow.
