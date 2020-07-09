@@ -148,3 +148,11 @@ Here we learn to use ENTRYPOINTS to have a BEGIN script in running our Docker Co
 This chapter concludes our development with Docker and we move on to using Docker in Production.
 
 I've really enjoyed this book so far. It did have it's fair share of head aches but I know have the confidence and motivation to squeeze docker into my dev workflow.
+
+## Chapter 11. - General overview of the rest of the book
+
+## Chapter 12. Preparing for Production
+
+It's been nice to get a break from 5 year old configs! This chapter was straightforward and introduces us to the Docker Registry.
+
+I hope we see more of the registry. I think it will be key to making our CI pipelines faster. Instead of setting up a testing environment for every run we should build an image, keep it current, and just re-use it.
