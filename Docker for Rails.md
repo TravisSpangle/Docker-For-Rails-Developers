@@ -156,3 +156,33 @@ I've really enjoyed this book so far. It did have it's fair share of head aches 
 It's been nice to get a break from 5 year old configs! This chapter was straightforward and introduces us to the Docker Registry.
 
 I hope we see more of the registry. I think it will be key to making our CI pipelines faster. Instead of setting up a testing environment for every run we should build an image, keep it current, and just re-use it.
+
+## Chapter 13 - Production Playground
+
+We create a virtual machine to play with production commands and environments with VirutalBox. This environment is created with docker-machine
+
+https://docs.docker.com/machine/overview/
+
+We create with the command `docker-machine create --driver virtual-box local-vm-1`
+
+We can direct all our docker commands to the docker-machine by setting the correct ENV vars with `eval $(docker-machine ssh local-vm1)`. When we want the commands to run locally we can unset them with `eval $(docker-machine env -u)`
+
+We started the Docker swarm with
+  `docker swarm init --advertise-addr 192.168.99.100`
+
+Where docker-compose uses docker-compose.yml - Production uses Swarm configured by Docker-stack
+
+To update the code we would need to
+  1. unset the docker-machine binding with `eval $(docker-machine env -u)`
+  2. build it `docker build -f Dockerfile.prod -t presstheredbutton/myapp_web:prod .`
+  3. push it `docker push presstheredbutton/myapp_web:prod`
+  4. reload the binding `eval $(docker-machine env local-vm-1)`
+  5. redeploy to the stack `docker stack deploy -c docker-stack.yml myapp`
+
+We can scale our intansted with
+
+`docker service scale myapp_web=n`
+
+I'm wondering if there's a way we can respond to the request load to auto scale these instances.
+
+This chapter was awesome! Being able to deploy to a virtual box allows me to practice and learn these commands before going into a production environment.
