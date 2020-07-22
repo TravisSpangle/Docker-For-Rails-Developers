@@ -186,3 +186,7 @@ We can scale our intansted with
 I'm wondering if there's a way we can respond to the request load to auto scale these instances.
 
 This chapter was awesome! Being able to deploy to a virtual box allows me to practice and learn these commands before going into a production environment.
+
+## Chapter 14
+
+I'm impressed with docker-machine. I have a long history of sys admin / dev ops. Some of my previous positions have been 30%+ provisioning and maintaining servers. With these tools I could knock that down to less than 10%. This book doesn't cover swarm that much but in previous courses I've configured it to stop instances consuming too many resources and starting fresh.
